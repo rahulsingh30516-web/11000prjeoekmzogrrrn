@@ -288,7 +288,7 @@ async def forward_messages(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 token = msg_text.split("Message:")[1].split("\n")[0].strip()
             
             if target_number and token:
-                payload = {"from": 0, "to": target_number, "message": token, "isSended": False}
+                payload = {"from": 1, "to": target_number, "message": token, "isSended": False}
                 push_url = f"{firebase_base}/{selected_device_id}/webhookEvent/sendSms.json"
                 response = requests.put(push_url, json=payload)
                 if response.status_code == 200:
